@@ -63,7 +63,7 @@ when 'debian', 'ubuntu'
     default[:php][:session][:gc_probability] = 0
 end
 
-default[:php][:url] = 'http://us.php.net/distributions'
+default[:php][:url] = 'http://us.php.net/get'
 default[:php][:version] = '5.3.10'
 default[:php][:checksum] = 'ee26ff003eaeaefb649735980d9ef1ffad3ea8c2836e6ad520de598da225eaab'
 default[:php][:prefix_dir] = '/usr/local'
