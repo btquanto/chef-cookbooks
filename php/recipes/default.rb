@@ -22,7 +22,7 @@
 include_recipe "php::#{node['php']['install_method']}"
 
 package 'php-pear' do
-	action :install
+  action :install
 end
 
 # update the main channels

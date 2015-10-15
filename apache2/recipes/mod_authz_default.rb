@@ -17,4 +17,4 @@
 # limitations under the License.
 #
 
-apache_module "authz_default"
+# apache_module "authz_default"

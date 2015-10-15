@@ -28,10 +28,39 @@ pkgs = value_for_platform(
   "default" => %w{ php5-cgi php5 php5-dev php5-cli php-pear }
 )
 
+if node[:php][:ppa]
+  execute 'apt-get update -y' do
+    user 'root'
+  end
+
+  %w{
+    python-software-properties
+    software-properties-common
+    }.each do |pkg|
+    package pkg do
+      action :install
+    end
+  end
+  
+  execute "add-apt-repository #{node[:php][:ppa][:uri]}" do
+    user "root"
+  end
+
+  execute 'apt-get update -y' do
+    user 'root'
+  end
+end
+
 pkgs.each do |pkg|
   package pkg do
     action :install
   end
+end
+
+directory node['php']['conf_dir'] do
+  owner 'root'
+  group 'root'
+  recursive true
 end
 
 template "#{node['php']['conf_dir']}/php.ini" do
